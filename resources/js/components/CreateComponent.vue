@@ -22,10 +22,12 @@
         <button type="submit" @click.prevent="addPost" class="btn btn-primary">
             Отправить
         </button>
+        <SomeComponent :obj="obj"></SomeComponent>
     </div>
 </template>
 
 <script>
+import SomeComponent from "./SomeComponent.vue";
 export default {
     name: "CreateComponent",
 
@@ -33,8 +35,13 @@ export default {
         return {
             title: null,
             description: null,
+            obj: {
+                color: 'black',
+                number: 20,
+            }
         };
     },
+
 
     mounted() {},
 
@@ -56,6 +63,10 @@ export default {
                 });
             this.$parent.$refs.index.getPosts();
         },
+    },
+
+    components: {
+        SomeComponent,
     },
 };
 </script>
